@@ -1,0 +1,28 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+
+
+[note: Parking System: Class Diagram]
+//[note: Required:Customer&Address]
+[CustomerProfile|-id:int|+CustomerProfile:;+CustomerProfile:;+getID():int]<>-[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]
+[CustomerProfile|-id:int|+CustomerProfile:;+CustomerProfile:;+getID():int]<>-[Address|-id:int;-streetAddress1:string;-streetAddress2:string;-city:string;-state:string;-zipcode:int|+Address:;+Address:;+getAddressInfo():array;+getID():int]
+[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]<-[Address|-id:int;-streetAddress1:string;-streetAddress2:string;-city:string;-state:string;-zipcode:int|+Address:;+Address:;+getAddressInfo():array;+getID():int]
+[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]->[Vehicle|-id:int;-carType:CarType|+Vehicle:]
+[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]
+[Transaction|-id:int;-customer:Customer;-fees:Money;-parkingLot:ParkingLot|+Transaction:]
+[Transaction|-id:int;-customer:int;-permit:int;-parkingLot:int;-fees:double;-discount:double|+Transaction:;+setTransactionInfo():void;+getTransactionInfo():string]->[Balance|-customer:Customer;-transaction:List<Transaction>;-balance:Money|+Balance:]
+[Balance|-customer:Customer;-transaction:List<Transaction>;-balance:Money|+Balance:]
+[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]->[ParkingOffice|-parkingOfficeName:String;-listOfCustomers:List<Customer>;-listOfParkingLots:List<ParkingLot>;-parkingLot+Address:Address|+ParkingOffice:;+ParkingOffice:;+register(Customer):void]
+[Address|-id:int;-streetAddress1:string;-streetAddress2:string;-city:string;-state:string;-zipcode:int|+Address:;+Address:;+getAddressInfo():array;+getID():int]->[ParkingOffice|-parkingOfficeName:String;-listOfCustomers:List<Customer>;-listOfParkingLots:List<ParkingLot>;-parkingLot+Address:Address|+ParkingOffice:;+ParkingOffice:;+register(Customer):void]
+[Money|-amount:long;-currency:String|+Money:;+Money:]->[ParkingLot|-id:String;-name:String;-address:Address;-maxCost:long|+ParkingLot:;+ParkingLot:;+getDailyRate(CarType):Money]
+[Address|-id:int;-streetAddress1:string;-streetAddress2:string;-city:string;-state:string;-zipcode:int|+Address:;+Address:;+getAddressInfo():array;+getID():int]->[ParkingLot|-id:String;-name:String;-address:Address;-maxCost:long|+ParkingLot:;+ParkingLot:;+getDailyRate(CarType):Money]
+[<<enum>>|CarType|-value:double]->[ParkingLot|-id:String;-name:String;-address:Address;-maxCost:long|+ParkingLot:;+ParkingLot:;+getDailyRate(CarType):Money]
+[<<enum>>|CarType|-value:double]->[Vehicle|-id:int;-carType:CarType|+Vehicle:]
+[Money|-amount:long;-currency:String|+Money:;+Money:]->[Transaction|-id:int;-customer:Customer;-fees:Money;-parkingLot:ParkingLot|+Transaction:]
+[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]->[Transaction|-id:int;-customer:Customer;-fees:Money;-parkingLot:ParkingLot|+Transaction:]
+[ParkingLot|-id:String;-name:String;-address:Address;-maxCost:long|+ParkingLot:;+ParkingLot:;+getDailyRate(CarType):Money]->[Transaction|-id:int;-customer:Customer;-fees:Money;-parkingLot:ParkingLot|+Transaction:]
+[Money|-amount:long;-currency:String|+Money:;+Money:]->[Balance|-customer:Customer;-transaction:List<Transaction>;-balance:Money|+Balance:]
+[Customer|-id:int;-firstName:string;-lastName:string;-phoneNumber:string;-address:Address|+Customer:;+Customer:;+getCustomerName:String]->[Balance|-customer:Customer;-transaction:List<Transaction>;-balance:Money|+Balance:]
+
+
