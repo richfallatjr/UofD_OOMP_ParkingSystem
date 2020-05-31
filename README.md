@@ -20,11 +20,10 @@ ASSIGNMENT INSTRUCTIONS
 
 Develop Java code for the below classes. The data attributes and methods are provided as a guide, please feel free to add more as you feel necessary. Explain your choices in the write-up. 
 
-.. important::
+Note that the ``Car``, ``ParkingPermit`` and ``ParkingTransaction`` classes should be **immutable**; once created with values they cannot be modified.
 
-    Note that the ``Car``, ``ParkingPermit`` and ``ParkingTransaction`` classes should be **immutable**; once created with values they cannot be modified.
-
-.. rubric:: Class: Car
+Class: Car
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 * Data Attributes
     * type : CarType
@@ -36,7 +35,8 @@ Develop Java code for the below classes. The data attributes and methods are pro
     * getLicensePlate() : String
     * getOwner() : Customer
 
-.. rubric:: Class: ParkingPermit
+Class: ParkingPermi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 * Data Attributes
     * id : String
@@ -46,14 +46,16 @@ Develop Java code for the below classes. The data attributes and methods are pro
 * Behaviors
     * getCar() : Car
 
-.. rubric:: Class: PermitManager 
+Class: PermitManager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 * Data Attributes
     * permits : List<ParkingPermit>
     * Behaviors
     * register(Car) : ParkingPermit
 
-.. rubric:: Class: ParkingTransaction 
+Class: ParkingTransaction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 * Data Attributes
     * date : Date
@@ -65,7 +67,8 @@ Develop Java code for the below classes. The data attributes and methods are pro
     * getChargedAmount() : Money
     * getPermit() : ParkingPermit
 
-.. rubric:: Class: TransactionManager 
+Class: TransactionManager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 * Data Attributes
     * transactions : List<ParkingTransaction>
