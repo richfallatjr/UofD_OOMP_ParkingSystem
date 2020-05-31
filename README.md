@@ -23,7 +23,7 @@ Develop Java code for the below classes. The data attributes and methods are pro
 Note that the ``Car``, ``ParkingPermit`` and ``ParkingTransaction`` classes should be **immutable**; once created with values they cannot be modified.
 
 Class: Car
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+________________________________
 
 * Data Attributes
     * type : CarType
@@ -36,7 +36,7 @@ Class: Car
     * getOwner() : Customer
 
 Class: ParkingPermi
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+________________________________
 
 * Data Attributes
     * id : String
@@ -47,7 +47,7 @@ Class: ParkingPermi
     * getCar() : Car
 
 Class: PermitManager
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+________________________________
 
 * Data Attributes
     * permits : List<ParkingPermit>
@@ -55,7 +55,7 @@ Class: PermitManager
     * register(Car) : ParkingPermit
 
 Class: ParkingTransaction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+________________________________
 
 * Data Attributes
     * date : Date
@@ -68,7 +68,7 @@ Class: ParkingTransaction
     * getPermit() : ParkingPermit
 
 Class: TransactionManager
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+________________________________
 
 * Data Attributes
     * transactions : List<ParkingTransaction>
