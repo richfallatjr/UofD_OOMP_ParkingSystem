@@ -18,12 +18,14 @@ public class PermitManager {
     // Note: mutability allowed
     private List<ParkingPermit> permits = new ArrayList();
     
+    public PermitManager() {
+        
+    }
+    
     public PermitManager(List<ParkingPermit> permits) {
         this.permits = permits;
     }
     
-    // inject a new permit
-    // create test to ensure no duplicate Cars or permits
     public ParkingPermit register(String id, Car c, Date expiration) {
         ParkingPermit newPermit;
         newPermit = new ParkingPermit(id,c,expiration);
@@ -35,5 +37,4 @@ public class PermitManager {
         return this.permits;
     }
     
-    // TODO create custom toString
 }

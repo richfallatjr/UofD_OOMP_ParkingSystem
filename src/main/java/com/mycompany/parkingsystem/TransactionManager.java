@@ -8,6 +8,7 @@ package com.mycompany.parkingsystem;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /** Extracts cost from given Customer or permit to create transaction
  *
@@ -16,6 +17,10 @@ import java.util.List;
 public class TransactionManager {
     
     private List<ParkingTransaction> transactions = new ArrayList();
+    
+    public TransactionManager() {
+        
+    }
     
     public TransactionManager(List<ParkingTransaction> pt) {
         this.transactions = pt;
@@ -27,22 +32,35 @@ public class TransactionManager {
             ParkingLot parkingLot
     ) {
         Money cost = getParkingCharges(permit);
-        ParkingTransaction tmp = new ParkingTransaction(date,permit,parkingLot,cost.getCurrency());
-        return tmp;
+        ParkingTransaction pt = new ParkingTransaction(date,permit,parkingLot,cost.getCurrency());
+        transactions.add(pt);
+        return pt;
     }
     
-    private Money getParkingCharges(ParkingPermit pp) {
-        Car car = pp.getCar();
-        CarType type = car.getType();
-        double cost = type.showValue(type);
-        // need to tie in park here
-        return new Money(cost, "USD");
+    public Money getParkingCharges(ParkingPermit pp) {
+        double amt = 0;
+        String currency = null;
+        for(int i = 0; i < transactions.size();i++) {
+            if (Objects.equals(transactions.get(i).getPermit().getID(),pp.getID())) {
+                amt = amt + transactions.get(i).getChargedAmount().getAmount();
+                currency = transactions.get(i).getChargedAmount().getCurrency();
+            }
+        }
+        return new Money(amt, currency);
     }
     
-    private Money getParkingCharges(Customer c) {
-        // TODO get charge
-        Money tmp = new Money(1000, "USD");
-        return tmp;
+    public Money getParkingCharges(Customer c) {
+        double amt = 0;
+        String currency = null;
+        for(int i = 0; i < transactions.size();i++) {
+            amt = amt + transactions.get(i).getChargedAmount().getAmount();
+            currency = transactions.get(i).getChargedAmount().getCurrency();
+        }
+        return new Money(amt, currency);
+    }
+    
+    public List<ParkingTransaction> getTransactions() {
+        return transactions;
     }
     
 }
