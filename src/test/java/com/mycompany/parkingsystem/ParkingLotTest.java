@@ -24,13 +24,13 @@ public class ParkingLotTest {
     public void testGetDailyRateCOMPACT() {
         try {
             System.out.println("getDailyRate");
-            double amt = 10000;
+            long amt = 10000;
             CarType ct = CarType.COMPACT;
             ParkingLot instance = new ParkingLot();
             instance.setMaxCost(amt);
             Money m = instance.getDailyRate(ct);
-            double result = m.getAmount();
-            double expresult = 8000;
+            long result = m.getAmount();
+            long expresult = 8000;
             assertEquals(expresult, result);
         } catch (Exception e) {
             fail("getDailyRate returned unexpected results COMPACT");
@@ -44,13 +44,13 @@ public class ParkingLotTest {
     public void testGetDailyRateSUV() {
         try {
             System.out.println("getDailyRate");
-            double amt = 1000;
+            long amt = 1000;
             CarType ct = CarType.SUV;
             ParkingLot instance = new ParkingLot();
             instance.setMaxCost(amt);
             Money m = instance.getDailyRate(ct);
-            double result = m.getAmount();
-            double expresult = amt;
+            long result = m.getAmount();
+            long expresult = amt;
             assertEquals(expresult, result);
         } catch (Exception e) {
             fail("getDailyRate returned unexpected results SUV");

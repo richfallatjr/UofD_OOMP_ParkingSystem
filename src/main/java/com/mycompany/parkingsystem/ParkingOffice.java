@@ -19,7 +19,12 @@ public class ParkingOffice {
     private List<ParkingLot> listOfParkingLots;
     private Address parkingOfficeAddress;
     
-    public ParkingOffice() {}
+    public ParkingOffice() {
+        this.parkingOfficeName = "Joe's Parking";
+        this.listOfCustomers = new ArrayList<Customer>();
+        this.listOfParkingLots = new ArrayList<ParkingLot>();
+        this.parkingOfficeAddress = new Address();
+    }
     
     public ParkingOffice(
             String parkingOfficeName,

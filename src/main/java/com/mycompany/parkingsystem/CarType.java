@@ -15,22 +15,20 @@ public enum CarType {
     COMPACT,
     SUV;
     
-    // TODO convert to double
-    private double value;
+    private long value;
     
-    private void Cartype(double v) {
+    private void Cartype(long v) {
         value = v;
     }
     
-    // TODO remove discount method
-    public double showValue(CarType ct) {
-        double amount = 0;
+    public long showValue(CarType ct) {
+        long amount = 0;
         
         switch(ct) {
             case COMPACT:
-                double discount = 80;
+                long discount = 80;
                 BigDecimal d = new BigDecimal(discount*value).movePointLeft(2);
-                amount = d.doubleValue();
+                amount = d.longValue();
                 break;
             case SUV:
                 amount = value;
@@ -47,20 +45,11 @@ public enum CarType {
         return SUV;
     }
 
-    // TODO convert to double
-    public double getValue() {
+    public long getValue() {
         return value;
     }
 
-    // TODO convert to double
-    public void setValue(double value) {
+    public void setValue(long value) {
         this.value = value;
     }
-
-    @Override
-    public String toString() {
-        return "CarType{" + "value=" + value + '}';
-    }
-    
-    
 }
