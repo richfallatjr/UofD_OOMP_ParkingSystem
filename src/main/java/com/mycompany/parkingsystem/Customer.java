@@ -17,15 +17,6 @@ public class Customer extends CustomerProfile {
     private String phoneNumber;
     private String[] address;
     
-    public Customer() {
-        this.id = "0";
-        this.firstName = "John";
-        this.lastName = "Doe";
-        this.phoneNumber = "1-800-555-1001";
-        Address a = new Address();
-        this.address = a.getAddressInfo();
-    }
-    
     public Customer(
             CustomerProfile c,
             String firstName,

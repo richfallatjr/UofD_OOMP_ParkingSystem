@@ -18,25 +18,6 @@ public class Address extends CustomerProfile {
     private String zipcode;
     
     
-    public Address() {
-        this.id = "0";
-        this.streetAddress1 = "123 Atlantis Blvd.";
-        this.streetAddress2 = "";
-        this.city = "Wuhan";
-        this.state = "CA";
-        this.zipcode = "90210";
-    }
-    
-    // I'm not sure if this is necessary
-    public Address(Address address) {
-        this.id = address.getID();
-        this.streetAddress1 = address.getStreetAddress1();
-        this.streetAddress2 = address.getStreetAddress2();
-        this.city = address.getCity();
-        this.state = address.getState();
-        this.zipcode = address.getZipcode();
-    }
-    
     public Address(
             CustomerProfile c,
             String streetAddress1,

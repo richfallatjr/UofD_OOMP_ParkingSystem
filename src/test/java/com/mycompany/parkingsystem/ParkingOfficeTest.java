@@ -18,7 +18,39 @@ public class ParkingOfficeTest {
     
     public ParkingOfficeTest() {
     }
+    
+    // Address object for testing purposes
+    private static Address testAddress(CustomerProfile cp) throws Exception {
+        //CustomerProfile id = new CustomerProfile("0");
+        String s1 = "123 Atlantis Blvd.";
+        String s2 = "";
+        String city = "Wuhan";
+        String state = "CA";
+        String zip = "90210";
+        Address a = new Address(cp,s1,s2,city,state,zip);
+        return a;
+    }
 
+    // Custoemr object for testing purposes
+    private static Customer testCustomer(CustomerProfile cp) throws Exception {
+        String first = "Jane";
+        String last = "Doh";
+        String phone = "555-555-1234";
+        Address a = testAddress(cp);
+        String id = a.getID();
+        Customer newC = new Customer(cp,first,last,phone,a);
+        return newC;
+    }
+    
+    // ParkingLot object for testing purposes
+    private static ParkingLot testParkingLot(CustomerProfile cp) throws Exception {
+        String id = cp.getID();
+        String name = "Joe's Parking";
+        Address address = testAddress(cp);
+        double maxCost = 20.00;
+        return new ParkingLot(id,name,address,maxCost);
+    }
+    
     /**
      * Test of register method, of class ParkingOffice.
      */
@@ -26,8 +58,8 @@ public class ParkingOfficeTest {
     public void testRegister() {
         try {
             System.out.println("setListOfCustomers");
-            Customer c1 = new Customer();
-            Customer c2 = new Customer();
+            Customer c1 = testCustomer(new CustomerProfile("0"));
+            Customer c2 = testCustomer(new CustomerProfile("1"));
             List<Customer> listOfCustomers = new ArrayList();
             listOfCustomers.add(c1);
             listOfCustomers.add(c1);
@@ -35,7 +67,7 @@ public class ParkingOfficeTest {
             ParkingOffice instance = new ParkingOffice();
             instance.setListOfCustomers(listOfCustomers);
             System.out.println("register");
-            Customer n = new Customer();
+            Customer n = testCustomer(new CustomerProfile("2"));;
             instance.register(n);
             int expResult = 4;
             int result = instance.getListOfCustomers().size();
@@ -70,8 +102,8 @@ public class ParkingOfficeTest {
     public void testSetListOfCustomersSize() {
         try {
             System.out.println("setListOfCustomers");
-            Customer c1 = new Customer();
-            Customer c2 = new Customer();
+            Customer c1 = testCustomer(new CustomerProfile("0"));
+            Customer c2 = testCustomer(new CustomerProfile("1"));
             List<Customer> listOfCustomers = new ArrayList();
             listOfCustomers.add(c1);
             listOfCustomers.add(c1);
@@ -93,8 +125,8 @@ public class ParkingOfficeTest {
     public void testSetListOfParkingLotsSize() {
         try {
             System.out.println("setListOfParkingLots");
-            ParkingLot l1 = new ParkingLot();
-            ParkingLot l2 = new ParkingLot();
+            ParkingLot l1 = testParkingLot(new CustomerProfile("0"));
+            ParkingLot l2 = testParkingLot(new CustomerProfile("1"));;
             List<ParkingLot> listOfParkingLots = new ArrayList();
             listOfParkingLots.add(l1);
             listOfParkingLots.add(l2);

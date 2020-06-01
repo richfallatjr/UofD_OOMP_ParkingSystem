@@ -29,8 +29,8 @@ public class Car {
         return this.licensePlate;
     }
     
-    public Customer getOwner() {
-        Customer tmp = new Customer();
+    public Customer getOwner(Customer c) {
+        Customer tmp = c;
         return tmp;
     }
 
