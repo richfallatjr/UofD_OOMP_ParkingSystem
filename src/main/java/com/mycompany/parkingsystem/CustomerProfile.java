@@ -10,6 +10,8 @@ package com.mycompany.parkingsystem;
  * @author richardfallat
  */
 public class CustomerProfile {
+    
+    // TODO remove of or create an is-a relationship
     private String id;
     
     public CustomerProfile() {
@@ -30,5 +32,10 @@ public class CustomerProfile {
     
     public String getID() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerProfile{" + "id=" + id + '}';
     }
 }

@@ -17,23 +17,23 @@ public class MoneyTest {
     public MoneyTest() {
     }
 
+    // Deprecate because class is immutable
     /**
      * Test of setAmount method, of class Money.
      */
     @Test
-    public void testSetAmount() {
+    public void testAmount() {
         try {
-            long amt = 1000;
-            String currency = "Cash";
-            Money inst = new Money(amt,currency);
-            long newamt = 1500;
-            inst.setAmount(newamt);
+            String currency = "USD";
+            double newamt = 15.00;
+            Money inst = new Money(newamt,currency);
             assertEquals(newamt, inst.getAmount());
         } catch (Exception e) {
             fail("Amount did not store properly");
         }
     }
 
+    // Deprecate because class is immutable
     /**
      * Test of setCurrency method, of class Money.
      */
@@ -41,10 +41,10 @@ public class MoneyTest {
     public void testSetCurrency() {
         try {
             System.out.println("setCurrency");
-            String currency = "Cash";
-            Money instance = new Money();
-            instance.setCurrency(currency);
-            String expresult = "Cash";
+            String currency = "USD";
+            double amt = 10.00;
+            Money instance = new Money(amt,currency);
+            String expresult = "USD";
             String result = instance.getCurrency();
             assertEquals(expresult,result);
         } catch (Exception e) {

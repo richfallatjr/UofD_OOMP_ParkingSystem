@@ -11,33 +11,21 @@ package com.mycompany.parkingsystem;
  */
 public class Money {
     
-    private long amount;
-    private String currency;
     
-    public Money() {
-        this.amount = 1000;
-        this.currency = "Credit";
-    }
+    private final double amount;
+    private final String currency;
     
-    public Money(long amount, String currency) {
+    public Money(double amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
 
-    public long getAmount() {
+    public double getAmount() {
         return amount;
     }
 
     public String getCurrency() {
         return currency;
-    }
-
-    public void setAmount(long amount) {
-        this.amount = amount;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 
     @Override
