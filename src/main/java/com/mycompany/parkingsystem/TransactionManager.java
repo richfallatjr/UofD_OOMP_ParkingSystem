@@ -27,7 +27,7 @@ public class TransactionManager {
             ParkingLot parkingLot
     ) {
         Money cost = getParkingCharges(permit);
-        ParkingTransaction tmp = new ParkingTransaction(date,permit,parkingLot,cost);
+        ParkingTransaction tmp = new ParkingTransaction(date,permit,parkingLot,cost.getCurrency());
         return tmp;
     }
     

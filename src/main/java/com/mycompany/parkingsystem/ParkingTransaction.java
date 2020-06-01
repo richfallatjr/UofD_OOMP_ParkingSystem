@@ -22,16 +22,15 @@ public class ParkingTransaction {
             Date date,
             ParkingPermit permit,
             ParkingLot parkingLot,
-            Money money
+            String currency
     ) {
         this.date = date;
         this.permit = permit;
         this.parkingLot = parkingLot;
-        this.money = money;
+        this.money = parkingLot.getDailyRate(permit.getCar().getType(), currency);
     }
     
     public Money getChargedAmount() {
-        // TODO need to leverage car and get discount etc.
         return money;
     }
     
@@ -41,12 +40,6 @@ public class ParkingTransaction {
     
     public ParkingLot getParkingLot() {
         return parkingLot;
-    }
-
-    @Override
-    public String toString() {
-        return "ParkingTransaction{" + "date=" + date + ", permit=" + permit +
-                ", parkingLot=" + parkingLot + ", money=" + money + '}';
     }
     
 }

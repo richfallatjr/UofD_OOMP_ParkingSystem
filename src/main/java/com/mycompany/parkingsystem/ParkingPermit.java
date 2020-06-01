@@ -26,6 +26,14 @@ public class ParkingPermit {
     public Car getCar() {
         return this.car;
     }
+    
+    public String getID() {
+        return this.id;
+    }
+    
+    public Date getExpiration() {
+        return this.expiration;
+    }
 
     @Override
     public String toString() {
