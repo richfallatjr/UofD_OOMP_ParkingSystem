@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Manages Transaction lists
  */
 package com.mycompany.parkingsystem;
 
@@ -22,10 +20,21 @@ public class TransactionManager {
         
     }
     
+    /** TransactionManager object from ParkingTransaction list
+     *
+     * @param pt
+     */
     public TransactionManager(List<ParkingTransaction> pt) {
         this.transactions = pt;
     }
     
+    /** Create a parking transaction
+     * 
+     * @param date
+     * @param permit
+     * @param parkingLot
+     * @return
+     */
     public ParkingTransaction park(
             Date date,
             ParkingPermit permit,
@@ -37,11 +46,16 @@ public class TransactionManager {
         return pt;
     }
     
+    /** Get total charges for a given permit
+     * 
+     * @param pp
+     * @return
+     */
     public Money getParkingCharges(ParkingPermit pp) {
         double amt = 0;
         String currency = null;
         for(int i = 0; i < transactions.size();i++) {
-            if (Objects.equals(transactions.get(i).getPermit().getID(),pp.getID())) {
+            if (Objects.equals(transactions.get(i).getPermit().getCar().getType(),pp.getCar().getType())) {
                 amt = amt + transactions.get(i).getChargedAmount().getAmount();
                 currency = transactions.get(i).getChargedAmount().getCurrency();
             }
@@ -49,6 +63,11 @@ public class TransactionManager {
         return new Money(amt, currency);
     }
     
+    /** Get total parking charges for given customer
+     * 
+     * @param c
+     * @return
+     */
     public Money getParkingCharges(Customer c) {
         double amt = 0;
         String currency = null;

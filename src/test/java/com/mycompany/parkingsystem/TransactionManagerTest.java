@@ -1,11 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Test TransactionManager object
  */
 package com.mycompany.parkingsystem;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -33,7 +30,7 @@ public class TransactionManagerTest {
     }
 
     // Custoemr object for testing purposes
-    private static Customer testCustomer(CustomerProfile cp) throws Exception {
+    private Customer testCustomer(CustomerProfile cp) throws Exception {
         String first = "Jane";
         String last = "Doh";
         String phone = "555-555-1234";
@@ -44,28 +41,30 @@ public class TransactionManagerTest {
     }
     
     // Car object for testing purposes
-    private static Car testCar(CarType ct) throws Exception {
-        String plate = "2LIVNDIEINLA";
+    private Car testCar(CarType ct, String plate) throws Exception {
         Car instance = new Car(ct,plate,testCustomer(new CustomerProfile("0")));
         return instance;
     }
     
     // ParkingPermit object for testing purposes
-    private static ParkingPermit testPermit(CarType ct) throws Exception{
+    private ParkingPermit testPermit(CarType ct) throws Exception{
         java.sql.Date date = java.sql.Date.valueOf(("2021-1-1"));
         String id = null;
+        String plate = null;
         switch(ct) {
             case COMPACT:
                 id = "1";
+                plate = "2LIVNDIEINLA";
             case SUV:
                 id = "2";
+                plate = "STEELERS4LIFE";
         }
-        ParkingPermit instance = new ParkingPermit(id,testCar(ct),date);
+        ParkingPermit instance = new ParkingPermit(id,testCar(ct,plate),date);
         return instance;
     }
     
     // ParkingLot object for testing purposes
-    private static ParkingLot testLot(double max, int id) throws Exception {
+    private ParkingLot testLot(double max, int id) throws Exception {
         String idS = Integer.toString(id);
         String name = "Joe's Parking";
         Address address = testAddress(new CustomerProfile(idS));
@@ -74,19 +73,19 @@ public class TransactionManagerTest {
     }
     
     // ParkingTransaction ArrayList for testing purposes
-    private static List<ParkingTransaction> testTransArray() throws Exception {
+    private List<ParkingTransaction> testTransArray() throws Exception {
         int perm1 = 5;
         int perm2 = 5;
         TransactionManager tm = new TransactionManager();
         for(int i=0;i<perm1;i++){
             Date date = java.sql.Date.valueOf("2020-5-" + Integer.toString(i+1));
-            ParkingLot lot = testLot(2*(i+1),i);
+            ParkingLot lot = testLot(10.00,i);
             ParkingPermit permSUV = testPermit(CarType.SUV);
             ParkingTransaction pSUV = tm.park(date, permSUV, lot);
         }
         for(int i=0;i<perm2;i++){
             Date date = java.sql.Date.valueOf("2020-5-" + Integer.toString(i+1+perm1));
-            ParkingLot lot = testLot(3*(i+1),i);
+            ParkingLot lot = testLot(10.00,i);
             ParkingPermit permCOMPACT = testPermit(CarType.COMPACT);
             ParkingTransaction pCOMPACT = tm.park(date, permCOMPACT, lot);
         }
@@ -94,7 +93,7 @@ public class TransactionManagerTest {
     }
 
     /**
-     * Test of park method, of class TransactionManager.
+     * Test park method from class TransactionManager.
      */
     @Test
     public void testPark() throws Exception {
@@ -114,8 +113,8 @@ public class TransactionManagerTest {
         }
     }
     
-    /** Contains transactions from one permit
-     * Test of park method, of class TransactionManager.
+    /** 
+     * Tests proper permit array insertion
      */
     @Test
     public void testPermitArraySize() throws Exception {
@@ -130,8 +129,8 @@ public class TransactionManagerTest {
         }
     }
     
-    /** Contains transactions from one permit
-     * Test of park method, of class TransactionManager.
+    /** 
+     * Tests getParkingCharges with Customer input
      */
     @Test
     public void testParkingChargesCustomer() throws Exception {
@@ -139,15 +138,15 @@ public class TransactionManagerTest {
             System.out.println("park");
             TransactionManager instance = new TransactionManager(testTransArray());
             double result = instance.getParkingCharges(testCustomer(new CustomerProfile("0"))).getAmount();
-            double expResult = 66;
+            double expResult = 90;
             assertEquals(expResult, result);
         } catch (Exception e) {
             fail("getParkingCharges not properly calcualted for customer");
         }
     }
     
-     /** Contains transactions from one permit
-     * Test of park method, of class TransactionManager.
+     /** 
+     * Contains transactions from SUV permits
      */
     @Test
     public void testParkingChargesPermitSUV() throws Exception {
@@ -156,11 +155,27 @@ public class TransactionManagerTest {
             CarType ctest = CarType.SUV;
             TransactionManager instance = new TransactionManager(testTransArray());
             double result = instance.getParkingCharges(testPermit(ctest)).getAmount();
-            double expResult = 66;
+            double expResult = 50;
             assertEquals(expResult, result);
         } catch (Exception e) {
-            fail("getParkingCharges not properly calcualated for customer");
+            fail("getParkingCharges not properly calcualated for CarType.SUV");
         }
     }
     
+    /** 
+     * Contains transactions from one permit
+     */
+    @Test
+    public void testParkingChargesPermitCOMPACT() throws Exception {
+        try {
+            System.out.println("park");
+            CarType ctest = CarType.COMPACT;
+            TransactionManager instance = new TransactionManager(testTransArray());
+            double result = instance.getParkingCharges(testPermit(ctest)).getAmount();
+            double expResult = 40;
+            assertEquals(expResult, result);
+        } catch (Exception e) {
+            fail("getParkingCharges not properly calcualated for CarType.COMPACT");
+        }
+    }
 }

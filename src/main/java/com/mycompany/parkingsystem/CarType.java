@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Specify COMPACT or SUV to apply lot discounts
  */
 package com.mycompany.parkingsystem;
 
@@ -15,14 +13,17 @@ public enum CarType {
     COMPACT,
     SUV;
     
-    // TODO convert to double
     private double value;
     
     private void Cartype(double v) {
         value = v;
     }
     
-    // TODO remove discount method
+    /** Return applied discount
+     *
+     * @param ct
+     * @return
+     */
     public double showValue(CarType ct) {
         double amount = 0;
         

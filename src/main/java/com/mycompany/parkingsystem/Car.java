@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Immutable Car object
  */
 package com.mycompany.parkingsystem;
 
@@ -15,6 +13,12 @@ public class Car {
     private final String licensePlate;
     private final Customer Owner;
     
+    /**
+     * Immutable Car object
+     * @param type
+     * @param licensePlate
+     * @param Owner
+     */
     public Car(CarType type, String licensePlate, Customer Owner) {
         this.type = type;
         this.licensePlate = licensePlate;

@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Immutable Customer object
  */
 package com.mycompany.parkingsystem;
 
@@ -9,14 +7,24 @@ package com.mycompany.parkingsystem;
  *
  * @author richardfallat
  */
-public class Customer extends CustomerProfile {
+public class Customer {
     
-    private String id;
+    private final String id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String[] address;
+    private final String[] address;
+    private final Address addressObj;
     
+    /**
+     * Immutable Customer object
+     * @param c
+     * @param firstName
+     * @param lastName
+     * @param phoneNumber
+     * @param a
+     * @throws Exception
+     */
     public Customer(
             CustomerProfile c,
             String firstName,
@@ -24,7 +32,6 @@ public class Customer extends CustomerProfile {
             String phoneNumber,
             Address a
             ) throws Exception {
-        super(c);
         this.id = c.getID();
         
         // Ensure input entered
@@ -44,11 +51,14 @@ public class Customer extends CustomerProfile {
         } else {
             throw new Exception("Phone numbers must contain 1 + area code");
         }
-        // Load array from Address object
         this.address = a.getAddressInfo();
+        this.addressObj = a;
     }
     
-    // concatanate customer name 
+    /** Concatenate first and last name
+     *
+     * @return
+     */
     public String getCustomerName() {
         String customerName = lastName + ", " + firstName;
         return customerName;
@@ -67,6 +77,10 @@ public class Customer extends CustomerProfile {
     }
     public String[] getAddress() {
         return address;
+    }
+    
+    public Address getAddressObj() {
+        return addressObj;
     }
 
     @Override

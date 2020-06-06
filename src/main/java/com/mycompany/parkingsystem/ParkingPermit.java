@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Create a ParkingPermit object
  */
 package com.mycompany.parkingsystem;
 
@@ -17,6 +15,12 @@ public class ParkingPermit {
     private final Car car;
     private final Date expiration;
     
+    /** Create ParkingPermit object
+     *
+     * @param id
+     * @param car
+     * @param expiration
+     */
     public ParkingPermit(String id, Car car, Date expiration) {
         this.id = id;
         this.car = car;

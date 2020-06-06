@@ -19,7 +19,7 @@ public class ParkingTransactionTest {
     }
     
     // Address object for testing purposes
-    private static Address testAddress(CustomerProfile cp) throws Exception {
+    private Address testAddress(CustomerProfile cp) throws Exception {
         //CustomerProfile id = new CustomerProfile("0");
         String s1 = "123 Atlantis Blvd.";
         String s2 = "";
@@ -31,7 +31,7 @@ public class ParkingTransactionTest {
     }
 
     // Custoemr object for testing purposes
-    private static Customer testCustomer(CustomerProfile cp) throws Exception {
+    private Customer testCustomer(CustomerProfile cp) throws Exception {
         String first = "Jane";
         String last = "Doh";
         String phone = "555-555-1234";
@@ -42,14 +42,14 @@ public class ParkingTransactionTest {
     }
     
     // Car object for testing purposes
-    private static Car testCar(CarType ct) throws Exception {
+    private Car testCar(CarType ct) throws Exception {
         String plate = "2LIVNDIEINLA";
         Car instance = new Car(ct,plate,testCustomer(new CustomerProfile("0")));
         return instance;
     }
     
     // ParkingPermit object for testing purposes
-    private static ParkingPermit testPermit(CarType ct) throws Exception{
+    private ParkingPermit testPermit(CarType ct) throws Exception{
         Date date = Date.valueOf(("2021-1-1"));
         String id = "2";
         ParkingPermit instance = new ParkingPermit(id,testCar(ct),date);
@@ -57,7 +57,7 @@ public class ParkingTransactionTest {
     }
     
     // ParkingLot object for testing purposes
-    private static ParkingLot testLot(double max) throws Exception {
+    private ParkingLot testLot(double max) throws Exception {
         String id = "1000";
         String name = "Joe's Parking";
         Address address = testAddress(new CustomerProfile(id));

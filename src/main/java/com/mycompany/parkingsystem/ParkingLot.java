@@ -1,14 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Immutable ParkingLot object
  */
 package com.mycompany.parkingsystem;
 
-import java.util.HashMap;
-
 /**
- *
+ * 
  * @author richardfallat
  */
 public class ParkingLot {
@@ -19,6 +15,13 @@ public class ParkingLot {
     // TODO change to double
     private final double maxCost;
     
+    /**
+     * Immutable ParkingLot object
+     * @param id
+     * @param name
+     * @param address
+     * @param maxCost
+     */
     public ParkingLot(
             String id,
             String name,
@@ -31,24 +34,22 @@ public class ParkingLot {
         this.maxCost = maxCost;
     }
     
-    /*
-    * Get daily rate for CarType
-    */
+    /**
+     * Get rate based on CarType discounts
+     * @param ct
+     * @param currency
+     * @return
+     */
     public Money getDailyRate(CarType ct, String currency) {
-        //Money m = new Money();
-        //TODO calculate daily rate in class
-        // remove showValue from CarType enum
         ct.setValue(maxCost);
         double value = 0;
         switch(ct) {
             case COMPACT:
                 value = ct.showValue(ct);
-                //m.setAmount(value);
                 
                 break;
             case SUV:
                 value = ct.showValue(ct);
-                //m.setAmount(value);
                 break;
         }
         Money m = new Money(value,currency);

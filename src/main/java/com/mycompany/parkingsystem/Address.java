@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Create an Address object
  */
 package com.mycompany.parkingsystem;
 
@@ -9,15 +7,24 @@ package com.mycompany.parkingsystem;
  *
  * @author richardfallat
  */
-public class Address extends CustomerProfile {
-    private String id;
+public class Address {
+    private final String id;
     private String streetAddress1;
-    private String streetAddress2;
+    private final String streetAddress2;
     private String city;
     private String state;
     private String zipcode;
     
-    
+    /** Immutable Address object
+     *
+     * @param c
+     * @param streetAddress1
+     * @param streetAddress2
+     * @param city
+     * @param state
+     * @param zipcode
+     * @throws Exception
+     */
     public Address(
             CustomerProfile c,
             String streetAddress1,
@@ -26,7 +33,6 @@ public class Address extends CustomerProfile {
             String state,
             String zipcode
     ) throws Exception {
-        super(c);
         this.id = c.getID();
         // Ensure input entered
         if (streetAddress1.length() >= 1) {
@@ -59,6 +65,10 @@ public class Address extends CustomerProfile {
         
     }
     
+    /** Aggregate list of address information
+     *
+     * @return
+     */
     public String[] getAddressInfo() {
         // array represents a temporary table row
         String[] addressInfo = {

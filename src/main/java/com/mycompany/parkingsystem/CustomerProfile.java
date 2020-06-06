@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * ID tied to customer data
  */
 package com.mycompany.parkingsystem;
 
@@ -11,17 +9,13 @@ package com.mycompany.parkingsystem;
  */
 public class CustomerProfile {
     
-    // TODO remove of or create an is-a relationship
     private String id;
     
-    public CustomerProfile() {
-        id = "0";
-    }
-    
-    public CustomerProfile(CustomerProfile c) {
-        this.id = c.getID();
-    }
-    
+    /**
+     * Immutable CustomerProfile object
+     * @param id
+     * @throws Exception
+     */
     public CustomerProfile(String id) throws Exception {
         if (id.length() >= 1) {
             this.id = id;
