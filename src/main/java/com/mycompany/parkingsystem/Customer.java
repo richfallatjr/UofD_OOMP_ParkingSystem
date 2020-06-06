@@ -64,6 +64,10 @@ public class Customer {
         return customerName;
     }
     
+    public String getID() {
+        return id;
+    }
+    
     public String getFirstName() {
         return firstName;
     }

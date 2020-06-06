@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Test CustomerProfile object
  */
 package com.mycompany.parkingsystem;
 
@@ -80,7 +78,7 @@ public class CustomerProfileTest {
             );
             assertEquals(inst.getID(), c.getID());
         } catch (Exception e) {
-            fail("Subclass did not inherit: Customer id");
+            fail("Composition did not reuse: Customer id");
         }
     }
 }

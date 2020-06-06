@@ -81,6 +81,10 @@ public class Address {
         };
         return addressInfo;
     }
+    
+    public String getID() {
+        return id;
+    }
 
     public String getStreetAddress1() {
         return streetAddress1;
