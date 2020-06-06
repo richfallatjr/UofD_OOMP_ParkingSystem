@@ -135,7 +135,7 @@ public class TransactionManagerTest {
     @Test
     public void testParkingChargesCustomer() throws Exception {
         try {
-            System.out.println("park");
+            System.out.println("getParkingCharges(Customer)");
             TransactionManager instance = new TransactionManager(testTransArray());
             double result = instance.getParkingCharges(testCustomer(new CustomerProfile("0"))).getAmount();
             double expResult = 90;
